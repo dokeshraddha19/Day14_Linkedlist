@@ -29,26 +29,32 @@ public class ILinkedList {
 			tail=newNode;
 		}
 	}
-     public void deleteFromStart() {  
-  
+	public void poplast() {  
+		  
         //Checks if the list is empty  
         if(head == null) {  
             System.out.println("List is empty");  
             return;  
         }  
         else {  
-            //Checks whether the list contains only one node  
-            //If not, the head will point to next node in the list and tail will point to the new head.  
-            if(head != tail) {  
-                head = head.next;  
+            //Checks whether the list contains only one element  
+            if(head != tail ) {  
+                Node current = head;  
+                //Loop through the list till the second last element such that current.next is pointing to tail  
+                while(current.next != tail) {  
+                    current = current.next;  
+                }  
+                //Second last element will become new tail of the list  
+                tail = current;  
+                tail.next = null;  
             }  
-            //If the list contains only one node  
-            //then, it will remove it and both head and tail will point to null  
+            //If the list contains only one element  
+            //Then it will remove it and both head and tail will point to null  
             else {  
                 head = tail = null;  
             }  
         }  
-    }  
+    }   
 	
 	
 	//display() will display all the nodes in the list
@@ -71,7 +77,7 @@ public class ILinkedList {
 		ilist.display();
 
  
-            		ilist.deleteFromStart();  
+            		ilist.poplast();  
             //Printing updated list  
            		 System.out.println("Updated List: ");  
             		ilist.display();  
