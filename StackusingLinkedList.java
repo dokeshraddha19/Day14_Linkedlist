@@ -99,6 +99,12 @@ public class StackusingLinkedList {
         
      // print Stack elements
         list.display();
+        while(list.top!=null) {
+        	list.pop();
+        	list.display();
+        }
+        list.peek();
+        list.display();
  
         
     }
